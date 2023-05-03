@@ -31,25 +31,25 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.tcMain = new System.Windows.Forms.TabControl();
             this.tpListado = new System.Windows.Forms.TabPage();
+            this.btnNuevo = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
             this.tpDatos = new System.Windows.Forms.TabPage();
             this.gbBusqueda = new System.Windows.Forms.GroupBox();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.txtCodigoBuscar = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.gbRegistro = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnLista = new System.Windows.Forms.Button();
+            this.txtCodigo = new System.Windows.Forms.TextBox();
             this.btnRegistrar = new System.Windows.Forms.Button();
             this.lblCode = new System.Windows.Forms.Label();
             this.nudCantidad = new System.Windows.Forms.NumericUpDown();
             this.lblNombre = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtPrecio = new System.Windows.Forms.TextBox();
+            this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblPrecio = new System.Windows.Forms.Label();
             this.lblCantidad = new System.Windows.Forms.Label();
-            this.btnLista = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnBuscar = new System.Windows.Forms.Button();
-            this.btnNuevo = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tcMain.SuspendLayout();
             this.tpListado.SuspendLayout();
@@ -90,6 +90,16 @@
             this.tpListado.Text = "Listado";
             this.tpListado.UseVisualStyleBackColor = true;
             // 
+            // btnNuevo
+            // 
+            this.btnNuevo.Location = new System.Drawing.Point(381, 253);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(75, 35);
+            this.btnNuevo.TabIndex = 10;
+            this.btnNuevo.Text = "Nuevo Registro";
+            this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
+            // 
             // listView1
             // 
             this.listView1.HideSelection = false;
@@ -115,7 +125,7 @@
             // 
             this.gbBusqueda.Controls.Add(this.btnEliminar);
             this.gbBusqueda.Controls.Add(this.btnBuscar);
-            this.gbBusqueda.Controls.Add(this.textBox3);
+            this.gbBusqueda.Controls.Add(this.txtCodigoBuscar);
             this.gbBusqueda.Controls.Add(this.label1);
             this.gbBusqueda.Location = new System.Drawing.Point(25, 176);
             this.gbBusqueda.Name = "gbBusqueda";
@@ -124,16 +134,50 @@
             this.gbBusqueda.TabStop = false;
             this.gbBusqueda.Text = "Búsqueda";
             // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Location = new System.Drawing.Point(214, 49);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(75, 35);
+            this.btnEliminar.TabIndex = 12;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Location = new System.Drawing.Point(133, 49);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(75, 35);
+            this.btnBuscar.TabIndex = 11;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            // 
+            // txtCodigoBuscar
+            // 
+            this.txtCodigoBuscar.Location = new System.Drawing.Point(91, 21);
+            this.txtCodigoBuscar.Name = "txtCodigoBuscar";
+            this.txtCodigoBuscar.Size = new System.Drawing.Size(322, 22);
+            this.txtCodigoBuscar.TabIndex = 12;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(25, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(48, 13);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Código:";
+            // 
             // gbRegistro
             // 
             this.gbRegistro.Controls.Add(this.btnLista);
-            this.gbRegistro.Controls.Add(this.textBox1);
+            this.gbRegistro.Controls.Add(this.txtCodigo);
             this.gbRegistro.Controls.Add(this.btnRegistrar);
             this.gbRegistro.Controls.Add(this.lblCode);
             this.gbRegistro.Controls.Add(this.nudCantidad);
             this.gbRegistro.Controls.Add(this.lblNombre);
-            this.gbRegistro.Controls.Add(this.textBox4);
-            this.gbRegistro.Controls.Add(this.textBox2);
+            this.gbRegistro.Controls.Add(this.txtPrecio);
+            this.gbRegistro.Controls.Add(this.txtNombre);
             this.gbRegistro.Controls.Add(this.lblPrecio);
             this.gbRegistro.Controls.Add(this.lblCantidad);
             this.gbRegistro.Location = new System.Drawing.Point(25, 22);
@@ -143,12 +187,24 @@
             this.gbRegistro.TabStop = false;
             this.gbRegistro.Text = "Registro";
             // 
-            // textBox1
+            // btnLista
             // 
-            this.textBox1.Location = new System.Drawing.Point(91, 21);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(322, 22);
-            this.textBox1.TabIndex = 1;
+            this.btnLista.Location = new System.Drawing.Point(318, 86);
+            this.btnLista.Name = "btnLista";
+            this.btnLista.Size = new System.Drawing.Size(75, 35);
+            this.btnLista.TabIndex = 10;
+            this.btnLista.Text = "Ver listado";
+            this.btnLista.UseVisualStyleBackColor = true;
+            this.btnLista.Click += new System.EventHandler(this.btnLista_Click);
+            // 
+            // txtCodigo
+            // 
+            this.txtCodigo.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodigo.Location = new System.Drawing.Point(91, 21);
+            this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.ReadOnly = true;
+            this.txtCodigo.Size = new System.Drawing.Size(322, 22);
+            this.txtCodigo.TabIndex = 1;
             // 
             // btnRegistrar
             // 
@@ -185,19 +241,19 @@
             this.lblNombre.TabIndex = 2;
             this.lblNombre.Text = "Nombre:";
             // 
-            // textBox4
+            // txtPrecio
             // 
-            this.textBox4.Location = new System.Drawing.Point(91, 105);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 22);
-            this.textBox4.TabIndex = 7;
+            this.txtPrecio.Location = new System.Drawing.Point(91, 105);
+            this.txtPrecio.Name = "txtPrecio";
+            this.txtPrecio.Size = new System.Drawing.Size(100, 22);
+            this.txtPrecio.TabIndex = 7;
             // 
-            // textBox2
+            // txtNombre
             // 
-            this.textBox2.Location = new System.Drawing.Point(91, 49);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(322, 22);
-            this.textBox2.TabIndex = 3;
+            this.txtNombre.Location = new System.Drawing.Point(91, 49);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(322, 22);
+            this.txtNombre.TabIndex = 3;
             // 
             // lblPrecio
             // 
@@ -217,58 +273,6 @@
             this.lblCantidad.TabIndex = 4;
             this.lblCantidad.Text = "Cantidad:";
             // 
-            // btnLista
-            // 
-            this.btnLista.Location = new System.Drawing.Point(318, 86);
-            this.btnLista.Name = "btnLista";
-            this.btnLista.Size = new System.Drawing.Size(75, 35);
-            this.btnLista.TabIndex = 10;
-            this.btnLista.Text = "Ver listado";
-            this.btnLista.UseVisualStyleBackColor = true;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(91, 21);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(322, 22);
-            this.textBox3.TabIndex = 12;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(25, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 13);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "Código:";
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.Location = new System.Drawing.Point(214, 49);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(75, 35);
-            this.btnEliminar.TabIndex = 12;
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Location = new System.Drawing.Point(133, 49);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(75, 35);
-            this.btnBuscar.TabIndex = 11;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            // 
-            // btnNuevo
-            // 
-            this.btnNuevo.Location = new System.Drawing.Point(381, 253);
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(75, 35);
-            this.btnNuevo.TabIndex = 10;
-            this.btnNuevo.Text = "Nuevo Registro";
-            this.btnNuevo.UseVisualStyleBackColor = true;
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -277,6 +281,7 @@
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro de datos";
             this.panel1.ResumeLayout(false);
             this.tcMain.ResumeLayout(false);
@@ -299,20 +304,20 @@
         private System.Windows.Forms.TabPage tpListado;
         private System.Windows.Forms.GroupBox gbBusqueda;
         private System.Windows.Forms.GroupBox gbRegistro;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.Button btnRegistrar;
         private System.Windows.Forms.Label lblCode;
         private System.Windows.Forms.NumericUpDown nudCantidad;
         private System.Windows.Forms.Label lblNombre;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtPrecio;
+        private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label lblPrecio;
         private System.Windows.Forms.Label lblCantidad;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnBuscar;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtCodigoBuscar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnLista;
     }

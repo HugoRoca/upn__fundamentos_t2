@@ -21,5 +21,15 @@ namespace SortingMedicines
         {
 
         }
+
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            tcMain.SelectedIndex = 1;
+        }
+
+        private void btnLista_Click(object sender, EventArgs e)
+        {
+            tcMain.SelectedIndex = 0;
+        }
     }
 }
