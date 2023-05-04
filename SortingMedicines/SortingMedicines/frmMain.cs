@@ -92,5 +92,29 @@ namespace SortingMedicines
                     products[i].MontoInvertido));
             }
         }
+
+        private void txtCantidad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            validarNumerosDecimales(sender, e);
+        }
+
+        private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            validarNumerosDecimales(sender, e);
+        }
+
+        private void validarNumerosDecimales(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+                (e.KeyChar != '.') && (e.KeyChar != ','))
+            {
+                e.Handled = true;
+            }
+
+            if (((e.KeyChar == '.') || (e.KeyChar == ',')) && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

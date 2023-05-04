@@ -31,15 +31,18 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.tcMain = new System.Windows.Forms.TabControl();
             this.tpListado = new System.Windows.Forms.TabPage();
+            this.lvDatos = new System.Windows.Forms.ListView();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.tpDatos = new System.Windows.Forms.TabPage();
             this.gbBusqueda = new System.Windows.Forms.GroupBox();
+            this.btnLista = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.txtCodigoBuscar = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.gbRegistro = new System.Windows.Forms.GroupBox();
-            this.btnLista = new System.Windows.Forms.Button();
+            this.txtCantidad = new System.Windows.Forms.TextBox();
+            this.btnNuevo_1 = new System.Windows.Forms.Button();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.btnRegistrar = new System.Windows.Forms.Button();
             this.lblCode = new System.Windows.Forms.Label();
@@ -48,9 +51,6 @@
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblPrecio = new System.Windows.Forms.Label();
             this.lblCantidad = new System.Windows.Forms.Label();
-            this.lvDatos = new System.Windows.Forms.ListView();
-            this.btnNuevo_1 = new System.Windows.Forms.Button();
-            this.txtCantidad = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.tcMain.SuspendLayout();
             this.tpListado.SuspendLayout();
@@ -90,6 +90,17 @@
             this.tpListado.Text = "Listado";
             this.tpListado.UseVisualStyleBackColor = true;
             // 
+            // lvDatos
+            // 
+            this.lvDatos.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lvDatos.HideSelection = false;
+            this.lvDatos.Location = new System.Drawing.Point(6, 6);
+            this.lvDatos.Name = "lvDatos";
+            this.lvDatos.Size = new System.Drawing.Size(522, 280);
+            this.lvDatos.TabIndex = 11;
+            this.lvDatos.UseCompatibleStateImageBehavior = false;
+            this.lvDatos.View = System.Windows.Forms.View.List;
+            // 
             // btnNuevo
             // 
             this.btnNuevo.Location = new System.Drawing.Point(453, 292);
@@ -125,6 +136,16 @@
             this.gbBusqueda.TabIndex = 11;
             this.gbBusqueda.TabStop = false;
             this.gbBusqueda.Text = "Búsqueda";
+            // 
+            // btnLista
+            // 
+            this.btnLista.Location = new System.Drawing.Point(272, 49);
+            this.btnLista.Name = "btnLista";
+            this.btnLista.Size = new System.Drawing.Size(75, 35);
+            this.btnLista.TabIndex = 10;
+            this.btnLista.Text = "Ver listado";
+            this.btnLista.UseVisualStyleBackColor = true;
+            this.btnLista.Click += new System.EventHandler(this.btnLista_Click);
             // 
             // btnEliminar
             // 
@@ -180,15 +201,24 @@
             this.gbRegistro.TabStop = false;
             this.gbRegistro.Text = "Registro";
             // 
-            // btnLista
+            // txtCantidad
             // 
-            this.btnLista.Location = new System.Drawing.Point(272, 49);
-            this.btnLista.Name = "btnLista";
-            this.btnLista.Size = new System.Drawing.Size(75, 35);
-            this.btnLista.TabIndex = 10;
-            this.btnLista.Text = "Ver listado";
-            this.btnLista.UseVisualStyleBackColor = true;
-            this.btnLista.Click += new System.EventHandler(this.btnLista_Click);
+            this.txtCantidad.Enabled = false;
+            this.txtCantidad.Location = new System.Drawing.Point(91, 77);
+            this.txtCantidad.Name = "txtCantidad";
+            this.txtCantidad.Size = new System.Drawing.Size(100, 22);
+            this.txtCantidad.TabIndex = 4;
+            this.txtCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantidad_KeyPress);
+            // 
+            // btnNuevo_1
+            // 
+            this.btnNuevo_1.Location = new System.Drawing.Point(257, 86);
+            this.btnNuevo_1.Name = "btnNuevo_1";
+            this.btnNuevo_1.Size = new System.Drawing.Size(75, 35);
+            this.btnNuevo_1.TabIndex = 10;
+            this.btnNuevo_1.Text = "Nuevo";
+            this.btnNuevo_1.UseVisualStyleBackColor = true;
+            this.btnNuevo_1.Click += new System.EventHandler(this.btnNuevo_1_Click);
             // 
             // txtCodigo
             // 
@@ -234,6 +264,7 @@
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(100, 22);
             this.txtPrecio.TabIndex = 5;
+            this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecio_KeyPress);
             // 
             // txtNombre
             // 
@@ -260,35 +291,6 @@
             this.lblCantidad.Size = new System.Drawing.Size(57, 13);
             this.lblCantidad.TabIndex = 4;
             this.lblCantidad.Text = "Cantidad:";
-            // 
-            // lvDatos
-            // 
-            this.lvDatos.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lvDatos.HideSelection = false;
-            this.lvDatos.Location = new System.Drawing.Point(6, 6);
-            this.lvDatos.Name = "lvDatos";
-            this.lvDatos.Size = new System.Drawing.Size(522, 280);
-            this.lvDatos.TabIndex = 11;
-            this.lvDatos.UseCompatibleStateImageBehavior = false;
-            this.lvDatos.View = System.Windows.Forms.View.List;
-            // 
-            // btnNuevo_1
-            // 
-            this.btnNuevo_1.Location = new System.Drawing.Point(257, 86);
-            this.btnNuevo_1.Name = "btnNuevo_1";
-            this.btnNuevo_1.Size = new System.Drawing.Size(75, 35);
-            this.btnNuevo_1.TabIndex = 10;
-            this.btnNuevo_1.Text = "Nuevo";
-            this.btnNuevo_1.UseVisualStyleBackColor = true;
-            this.btnNuevo_1.Click += new System.EventHandler(this.btnNuevo_1_Click);
-            // 
-            // txtCantidad
-            // 
-            this.txtCantidad.Enabled = false;
-            this.txtCantidad.Location = new System.Drawing.Point(91, 77);
-            this.txtCantidad.Name = "txtCantidad";
-            this.txtCantidad.Size = new System.Drawing.Size(100, 22);
-            this.txtCantidad.TabIndex = 4;
             // 
             // frmMain
             // 

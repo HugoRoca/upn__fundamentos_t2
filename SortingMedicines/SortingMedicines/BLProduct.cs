@@ -37,6 +37,7 @@ namespace SortingMedicines
             List<ProductModule> lstProducts = new List<ProductModule>();
             for (int i = 0; i < products.Length; i++)
             {
+                if (products[i] == null) continue;
                 if (products[i].Nombre == productName)
                 {
                     lstProducts.Add(products[i]);
