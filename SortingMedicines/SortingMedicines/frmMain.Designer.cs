@@ -263,6 +263,7 @@
             // 
             // lvDatos
             // 
+            this.lvDatos.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lvDatos.HideSelection = false;
             this.lvDatos.Location = new System.Drawing.Point(6, 6);
             this.lvDatos.Name = "lvDatos";

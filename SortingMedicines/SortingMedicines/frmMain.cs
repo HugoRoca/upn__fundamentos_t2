@@ -84,7 +84,7 @@ namespace SortingMedicines
             {
                 if (products[i] == null) continue;
 
-                lvDatos.Items.Add(string.Format("{0} - {1} - {2} - S/. {3} - Valor: S/. {4}",
+                lvDatos.Items.Add(string.Format("{0} - {1} - {2} unidades - S/. {3} - Valor: S/. {4}",
                     products[i].Codigo,
                     products[i].Nombre,
                     products[i].Cantidad,
