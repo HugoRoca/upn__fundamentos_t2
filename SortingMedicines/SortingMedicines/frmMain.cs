@@ -50,10 +50,14 @@ namespace SortingMedicines
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             ProductModule[] products = _blProduct.SearchProduct(txtCodigoBuscar.Text);
+
+            string message = "Producto encontrado!";
             if (products.Length > 0)
             {
-                MessageBox.Show("Producto encontrado!");
+                message = "Producto NO encontrado!";
             }
+
+            MessageBox.Show(message);
         }
 
         private void frmEnabledOrDisabledComponents(bool val)
