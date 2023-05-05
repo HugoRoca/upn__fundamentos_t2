@@ -1,29 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SortingMedicines
 {
     public class BLProduct
     {
-        private ProductModule[] products;
-        private int contador;
+        private ProductModule[] a_products;
+        private int a_contador;
 
-        public BLProduct(int capacidad)
+        public BLProduct(int a_capacidad)
         {
-            products = new ProductModule[capacidad];
-            contador = 0;
+            a_products = new ProductModule[a_capacidad];
+            a_contador = 0;
         }
 
-        public void RegisterProduct(ProductModule product)
+        public void RegisterProduct(ProductModule a_product)
         {
-            if (contador < products.Length)
+            if (a_contador < a_products.Length)
             {
-                products[contador] = product;
-                contador++;
+                a_products[a_contador] = a_product;
+                a_contador++;
             }
             else
             {
@@ -31,48 +28,66 @@ namespace SortingMedicines
             }
         }
 
-        public ProductModule[] SearchProduct(string productName)
+        public ProductModule SearchProductByName(string a_productName)
         {
-            //return products.Where(p => p.Nombre.Contains(productName)).ToArray();
-            List<ProductModule> lstProducts = new List<ProductModule>();
-            for (int i = 0; i < products.Length; i++)
+            for (int i = 0; i < a_products.Length; i++)
             {
-                if (products[i] == null) continue;
-                if (products[i].Nombre == productName)
+                if (a_products[i].Nombre == null) continue;
+                if (a_products[i].Nombre.ToLower() == a_productName.ToLower())
                 {
-                    lstProducts.Add(products[i]);
+                    return a_products[i];
                 }
             }
-
-            return lstProducts.ToArray();
+            
+            return new ProductModule();
         }
 
-        public ProductModule[] GetProducts()
+        public ProductModule[] GetProductsAndSort()
         {
-            if (contador <= 1) return products;
+            if (a_contador <= 1) return a_products;
 
-            ProductModule[] productosOrdenados = new ProductModule[products.Length];
-            Array.Copy(products, productosOrdenados, products.Length);
-
-            for (int i = 0; i < productosOrdenados.Length - 1; i++)
+            for (int i = 0; i < a_products.Length - 1; i++)
             {
-                for (int j = i + 1; j < productosOrdenados.Length; j++)
+                for (int j = i + 1; j < a_products.Length; j++)
                 {
-                    if ((productosOrdenados[i]?.Nombre ?? string.Empty).CompareTo(productosOrdenados[j]?.Nombre ?? string.Empty) > 0)
+                    if (a_products[j].Nombre == null) break;
+                    if (a_products[i].Nombre.ToLower().CompareTo(a_products[j].Nombre.ToLower()) > 0)
                     {
-                        ProductModule temp = productosOrdenados[i];
-                        productosOrdenados[i] = productosOrdenados[j];
-                        productosOrdenados[j] = temp;
+                        ProductModule temp = a_products[i];
+                        a_products[i] = a_products[j];
+                        a_products[j] = temp;
                     }
                 }
             }
 
-            return productosOrdenados;
+            return a_products;
         }
 
-        public string GenerateCode()
+        public int DeleteProduct(string a_code)
         {
-            return "COD" + (contador + 1).ToString($"D{5}");
+            int a_indice = -1;
+
+            for (int i = 0; i < a_contador; i++)
+            {
+                if (a_products[i].Codigo.ToLower() == a_code.ToLower())
+                {
+                    a_indice = i;
+                    break;
+                }
+            }
+
+            if (a_indice < 0) return a_indice;
+
+            for (int i = a_indice; i < a_contador - 1; i++)
+            {
+                a_products[i] = a_products[i + 1];
+            }
+
+            a_contador--;
+
+            a_products[a_contador] = new ProductModule();
+
+            return a_indice;
         }
     }
 }

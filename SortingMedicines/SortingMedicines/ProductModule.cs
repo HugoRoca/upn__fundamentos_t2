@@ -1,6 +1,6 @@
 ﻿namespace SortingMedicines
 {
-    public class ProductModule
+    public struct ProductModule
     {
         public string Codigo { get; set; }
         public string Nombre { get; set; }
