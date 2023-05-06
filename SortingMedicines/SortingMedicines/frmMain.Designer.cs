@@ -34,12 +34,16 @@
             this.lvDatos = new System.Windows.Forms.ListView();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.tpDatos = new System.Windows.Forms.TabPage();
+            this.gbEliminar = new System.Windows.Forms.GroupBox();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.txtCodigoBuscar = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.gbBusqueda = new System.Windows.Forms.GroupBox();
-            this.btnLista = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.txtNombreBuscar = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.gbRegistro = new System.Windows.Forms.GroupBox();
+            this.btnLista = new System.Windows.Forms.Button();
             this.txtCantidad = new System.Windows.Forms.TextBox();
             this.btnNuevo_1 = new System.Windows.Forms.Button();
             this.txtCodigo = new System.Windows.Forms.TextBox();
@@ -50,17 +54,13 @@
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblPrecio = new System.Windows.Forms.Label();
             this.lblCantidad = new System.Windows.Forms.Label();
-            this.gbEliminar = new System.Windows.Forms.GroupBox();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.txtCodigoBuscar = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.tcMain.SuspendLayout();
             this.tpListado.SuspendLayout();
             this.tpDatos.SuspendLayout();
+            this.gbEliminar.SuspendLayout();
             this.gbBusqueda.SuspendLayout();
             this.gbRegistro.SuspendLayout();
-            this.gbEliminar.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -128,6 +128,44 @@
             this.tpDatos.Text = "Datos";
             this.tpDatos.UseVisualStyleBackColor = true;
             // 
+            // gbEliminar
+            // 
+            this.gbEliminar.Controls.Add(this.btnEliminar);
+            this.gbEliminar.Controls.Add(this.txtCodigoBuscar);
+            this.gbEliminar.Controls.Add(this.label4);
+            this.gbEliminar.Location = new System.Drawing.Point(39, 248);
+            this.gbEliminar.Name = "gbEliminar";
+            this.gbEliminar.Size = new System.Drawing.Size(451, 62);
+            this.gbEliminar.TabIndex = 15;
+            this.gbEliminar.TabStop = false;
+            this.gbEliminar.Text = "Eliminar";
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Location = new System.Drawing.Point(370, 13);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(75, 35);
+            this.btnEliminar.TabIndex = 14;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // txtCodigoBuscar
+            // 
+            this.txtCodigoBuscar.Location = new System.Drawing.Point(91, 21);
+            this.txtCodigoBuscar.Name = "txtCodigoBuscar";
+            this.txtCodigoBuscar.Size = new System.Drawing.Size(273, 22);
+            this.txtCodigoBuscar.TabIndex = 13;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(25, 24);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(48, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Código:";
+            // 
             // gbBusqueda
             // 
             this.gbBusqueda.Controls.Add(this.btnBuscar);
@@ -140,22 +178,12 @@
             this.gbBusqueda.TabStop = false;
             this.gbBusqueda.Text = "Búsqueda";
             // 
-            // btnLista
-            // 
-            this.btnLista.Location = new System.Drawing.Point(370, 86);
-            this.btnLista.Name = "btnLista";
-            this.btnLista.Size = new System.Drawing.Size(75, 35);
-            this.btnLista.TabIndex = 10;
-            this.btnLista.Text = "Ver listado";
-            this.btnLista.UseVisualStyleBackColor = true;
-            this.btnLista.Click += new System.EventHandler(this.btnLista_Click);
-            // 
             // btnBuscar
             // 
             this.btnBuscar.Location = new System.Drawing.Point(370, 13);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 35);
-            this.btnBuscar.TabIndex = 11;
+            this.btnBuscar.TabIndex = 13;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
@@ -195,6 +223,16 @@
             this.gbRegistro.TabIndex = 10;
             this.gbRegistro.TabStop = false;
             this.gbRegistro.Text = "Registro";
+            // 
+            // btnLista
+            // 
+            this.btnLista.Location = new System.Drawing.Point(370, 86);
+            this.btnLista.Name = "btnLista";
+            this.btnLista.Size = new System.Drawing.Size(75, 35);
+            this.btnLista.TabIndex = 10;
+            this.btnLista.Text = "Ver listado";
+            this.btnLista.UseVisualStyleBackColor = true;
+            this.btnLista.Click += new System.EventHandler(this.btnLista_Click);
             // 
             // txtCantidad
             // 
@@ -287,44 +325,6 @@
             this.lblCantidad.TabIndex = 4;
             this.lblCantidad.Text = "Cantidad:";
             // 
-            // gbEliminar
-            // 
-            this.gbEliminar.Controls.Add(this.btnEliminar);
-            this.gbEliminar.Controls.Add(this.txtCodigoBuscar);
-            this.gbEliminar.Controls.Add(this.label4);
-            this.gbEliminar.Location = new System.Drawing.Point(39, 248);
-            this.gbEliminar.Name = "gbEliminar";
-            this.gbEliminar.Size = new System.Drawing.Size(451, 62);
-            this.gbEliminar.TabIndex = 15;
-            this.gbEliminar.TabStop = false;
-            this.gbEliminar.Text = "Eliminar";
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.Location = new System.Drawing.Point(370, 13);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(75, 35);
-            this.btnEliminar.TabIndex = 11;
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
-            // 
-            // txtCodigoBuscar
-            // 
-            this.txtCodigoBuscar.Location = new System.Drawing.Point(91, 21);
-            this.txtCodigoBuscar.Name = "txtCodigoBuscar";
-            this.txtCodigoBuscar.Size = new System.Drawing.Size(273, 22);
-            this.txtCodigoBuscar.TabIndex = 12;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(25, 24);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(48, 13);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "Código:";
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -342,12 +342,12 @@
             this.tcMain.ResumeLayout(false);
             this.tpListado.ResumeLayout(false);
             this.tpDatos.ResumeLayout(false);
+            this.gbEliminar.ResumeLayout(false);
+            this.gbEliminar.PerformLayout();
             this.gbBusqueda.ResumeLayout(false);
             this.gbBusqueda.PerformLayout();
             this.gbRegistro.ResumeLayout(false);
             this.gbRegistro.PerformLayout();
-            this.gbEliminar.ResumeLayout(false);
-            this.gbEliminar.PerformLayout();
             this.ResumeLayout(false);
 
         }

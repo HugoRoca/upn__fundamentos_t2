@@ -5,7 +5,7 @@ namespace SortingMedicines
 {
     public partial class frmMain : Form
     {
-        BLProduct a_blProduct = new BLProduct(100);
+        BLProducto a_blProduct = new BLProducto(100);
         public frmMain()
         {
             InitializeComponent();
@@ -13,25 +13,26 @@ namespace SortingMedicines
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            frmEnabledOrDisabledComponents(false);
+            frmHabilitarDeshabilitarControles(false);
         }
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            if (isCorrectDataForRegister())
+            if (ValidarTextboxesParaRegistrar())
             {
-                ProductModule a_product = new ProductModule(
+                ProductoModel a_product = new ProductoModel(
                 txtCodigo.Text,
                 txtNombre.Text,
                 int.Parse(txtCantidad.Text),
                 double.Parse(txtPrecio.Text));
 
-                a_blProduct.RegisterProduct(a_product);
+                a_blProduct.RegistrarProducto(a_product);
                 MessageBox.Show("Producto registrado correctamente!");
-                frmEnabledOrDisabledComponents(false);
 
-                ProductModule[] products = a_blProduct.GetProductsAndSort();
-                loadDataListView(products);
+                frmHabilitarDeshabilitarControles(false);
+
+                ProductoModel[] products = a_blProduct.ObtenerProductosYOrdenar();
+                CargarListView(products);
             } else
             {
                 MessageBox.Show("Debe de completar todos los datos para registrar!");
@@ -41,7 +42,7 @@ namespace SortingMedicines
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            ProductModule a_product = a_blProduct.SearchProductByName(txtNombreBuscar.Text);
+            ProductoModel a_product = a_blProduct.BuscarProductoPorNombre(txtNombreBuscar.Text);
 
             string a_message = "Producto NO encontrado!";
 
@@ -71,7 +72,7 @@ namespace SortingMedicines
 
         private void btnNuevo_1_Click(object sender, EventArgs e)
         {
-            frmEnabledOrDisabledComponents(btnNuevo_1.Text == "Nuevo");
+            frmHabilitarDeshabilitarControles(btnNuevo_1.Text == "Nuevo");
         }
 
         private void txtCantidad_KeyPress(object sender, KeyPressEventArgs e)
@@ -86,13 +87,13 @@ namespace SortingMedicines
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            int a_indice = a_blProduct.DeleteProduct(txtCodigoBuscar.Text);
+            int a_indice = a_blProduct.EliminarProducto(txtCodigoBuscar.Text);
 
             if (a_indice >= 0)
             {
                 MessageBox.Show("Producto eliminado correctamente!");
-                ProductModule[] a_products = a_blProduct.GetProductsAndSort();
-                loadDataListView(a_products);
+                ProductoModel[] a_products = a_blProduct.ObtenerProductosYOrdenar();
+                CargarListView(a_products);
             }
             else
             {
@@ -102,21 +103,21 @@ namespace SortingMedicines
             txtCodigoBuscar.Clear();
         }
 
-        private bool isCorrectDataForRegister()
+        private bool ValidarTextboxesParaRegistrar()
         {
             return !(txtCodigo.Text == "" || txtNombre.Text == "" || txtCantidad.Text == "" || txtPrecio.Text == "");
         }
 
-        private void frmEnabledOrDisabledComponents(bool a_val)
+        private void frmHabilitarDeshabilitarControles(bool a_valor)
         {
-            txtNombre.Enabled = a_val;
-            txtPrecio.Enabled = a_val;
-            txtCantidad.Enabled = a_val;
-            btnNuevo_1.Text = a_val ? "Cancel" : "Nuevo";
-            gbBusqueda.Enabled = !a_val;
-            gbEliminar.Enabled = !a_val;
-            btnRegistrar.Enabled = a_val;
-            btnLista.Enabled = !a_val;
+            txtNombre.Enabled = a_valor;
+            txtPrecio.Enabled = a_valor;
+            txtCantidad.Enabled = a_valor;
+            btnNuevo_1.Text = a_valor ? "Cancelar" : "Nuevo";
+            gbBusqueda.Enabled = !a_valor;
+            gbEliminar.Enabled = !a_valor;
+            btnRegistrar.Enabled = a_valor;
+            btnLista.Enabled = !a_valor;
 
             txtCantidad.Text = "";
             txtNombre.Text = "";
@@ -126,11 +127,11 @@ namespace SortingMedicines
 
             if (btnNuevo_1.Text == "Nuevo")
             {
-                txtCodigo.Text = generateCodeRandom();
+                txtCodigo.Text = GenegarCodigoRandom();
             }
         }
 
-        private string generateCodeRandom()
+        private string GenegarCodigoRandom()
         {
             int a_zeros = 3;
             int a_maxNumber = (int)Math.Pow(10, a_zeros) - 1;
@@ -152,19 +153,19 @@ namespace SortingMedicines
             }
         }
 
-        private void loadDataListView(ProductModule[] products)
+        private void CargarListView(ProductoModel[] a_productos)
         {
             lvDatos.Items.Clear();
-            for (int i = 0; i < products.Length; i++)
+            for (int a_i = 0; a_i < a_productos.Length; a_i++)
             {
-                if (products[i].Nombre == null) continue;
+                if (a_productos[a_i].Nombre == null) continue;
 
                 lvDatos.Items.Add(string.Format("{0} - {1} - {2} unidades - S/. {3} - Valor: S/. {4}",
-                    products[i].Codigo,
-                    products[i].Nombre,
-                    products[i].Cantidad,
-                    products[i].Precio,
-                    products[i].MontoInvertido));
+                    a_productos[a_i].Codigo,
+                    a_productos[a_i].Nombre,
+                    a_productos[a_i].Cantidad,
+                    a_productos[a_i].Precio,
+                    a_productos[a_i].MontoInvertido));
             }
         }
     }
